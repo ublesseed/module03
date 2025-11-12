@@ -30,6 +30,20 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v4
 
+      # 2. Node.js 설정 (버전 지정)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'   # 필요에 따라 16, 20 등으로 변경 가능
+
+      # 3. npm install 실행
+      - name: Install Dependencies
+        run: npm install
+
+      # (선택) 4. 빌드 실행
+      # - name: Build Project
+      #   run: npm run build
+
       - name: Black Duck Security Scan
         id: black-duck-security-scan
         uses: blackduck-inc/black-duck-security-scan@v2
